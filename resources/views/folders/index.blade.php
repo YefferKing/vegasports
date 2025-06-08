@@ -26,19 +26,6 @@
 <div id="folders-list">
     @include('folders.partials.list', ['folders' => $folders])
 </div>
-
-@if($folders->isEmpty())
-    <div class="text-center py-5">
-        <div class="mb-4">
-            <i class="fas fa-folder-open fa-5x text-muted"></i>
-        </div>
-        <h4 class="text-muted">No tienes carpetas aún</h4>
-        <p class="text-muted mb-4">Crea tu primera carpeta para comenzar a organizar tus imágenes por categorías.</p>
-        <a href="{{ route('folders.create') }}" class="btn btn-primary btn-lg">
-            <i class="fas fa-plus me-2"></i>Crear Primera Carpeta
-        </a>
-    </div>
-@endif
 @endsection
 
 @push('scripts')
