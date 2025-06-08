@@ -1,0 +1,8 @@
+{
+  "framework": null,
+  "settings": {
+    "buildCommand": "composer install --optimize-autoloader",
+    "outputDirectory": "public",
+    "devCommand": "php -S localhost:8000 -t public"
+  }
+}
