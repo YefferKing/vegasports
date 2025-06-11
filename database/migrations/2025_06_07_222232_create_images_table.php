@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('image_type');
             $table->string('file_path');
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
+            $table->string('cloudinary_public_id');
             
             $table->index(['folder_id', 'updated_at']);
         });

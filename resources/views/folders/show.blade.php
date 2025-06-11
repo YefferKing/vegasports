@@ -96,7 +96,7 @@
                                    style="transform: scale(1.2);">
                         </div>
                         
-                        <img src="{{ asset($image->file_path) }}" 
+                        <img src="{{ $image->file_path }}" 
                              class="card-img-top" 
                              style="height: 200px; object-fit: cover; cursor: pointer;"
                              alt="{{ $image->image_name }}"
@@ -127,7 +127,7 @@
                                     data-bs-target="#imageModal{{ $image->id }}">
                                 <i class="fas fa-eye"></i>
                             </button>
-                            <a href="{{ asset($image->file_path) }}" 
+                            <a href="{{ $image->file_path }}" 
                                download="{{ $image->image_name }}"
                                class="btn btn-outline-success btn-sm">
                                 <i class="fas fa-download"></i>
@@ -156,7 +156,7 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                             </div>
                             <div class="modal-body text-center">
-                                <img src="{{ asset($image->file_path) }}" 
+                                <img src="{{ $image->file_path }}" 
                                      class="img-fluid" 
                                      alt="{{ $image->image_name }}">
                                 
@@ -167,7 +167,7 @@
                                 </div>
                             </div>
                             <div class="modal-footer">
-                                <a href="{{ asset($image->file_path) }}" 
+                                <a href="{{ $image->file_path }}" 
                                    download="{{ $image->image_name }}"
                                    class="btn btn-success">
                                     <i class="fas fa-download me-1"></i>Descargar
