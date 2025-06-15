@@ -79,75 +79,75 @@
     </form>
 
     <!-- Grid de imágenes -->
-    <div class="row">
-        @foreach($images as $index => $image)
-            <div class="col-md-6 col-lg-4 col-xl-3 mb-4">
-                <div class="card h-100 shadow-sm">
-                    <div class="position-relative">
-                        <div class="position-absolute top-0 start-0 m-2">
-                            <input class="form-check-input image-checkbox" 
-                                   type="checkbox" 
-                                   value="{{ $image->id }}" 
-                                   id="image{{ $image->id }}"
-                                   style="transform: scale(1.2);">
-                        </div>
-                        
-                        <img src="{{ $image->file_path }}" 
-                             class="card-img-top" 
-                             style="height: 200px; object-fit: cover; cursor: pointer;"
-                             alt="{{ $image->image_name }}"
-                             onclick="openImageModal({{ $index }})">
-                        
-                        <span class="position-absolute top-0 end-0 m-2 badge bg-dark">
-                            {{ strtoupper(pathinfo($image->image_name, PATHINFO_EXTENSION)) }}
-                        </span>
-                    </div>
-                    
-                    <div class="card-body p-3">
-                        <h6 class="card-title mb-2" title="{{ $image->image_name }}">
-                            {{ Str::limit($image->image_name, 20) }}
-                        </h6>
-                        
-                        <div class="d-flex justify-content-between text-muted small mb-2">
-                            <span>{{ number_format($image->image_size / 1024, 1) }} KB</span>
-                            <span>{{ $image->updated_at->format('d/m/Y H:i') }}</span>
-                        </div>
-                    </div>
-                    
-                    <div class="card-footer p-2">
-                        <div class="btn-group w-100">
-                            <button class="btn btn-outline-primary btn-sm" 
-                                    onclick="openImageModal({{ $index }})">
-                                <i class="fas fa-eye"></i>
-                            </button>
-                            <a href="{{ $image->file_path }}" 
-                               download="{{ $image->image_name }}"
-                               class="btn btn-outline-success btn-sm">
-                                <i class="fas fa-download"></i>
-                            </a>
-                            <form action="{{ route('images.destroy', $image) }}" 
-                                  method="POST" 
-                                  class="d-inline">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" 
-                                        class="btn btn-outline-danger btn-sm"
-                                        onclick="return confirm('¿Eliminar imagen {{ $image->image_name }}?')">
-                                    <i class="fas fa-trash"></i>
-                                </button>
-                            </form>
-                        </div>
-                    </div>
+@foreach($images as $index => $image)
+    <div class="col-md-6 col-lg-4 col-xl-3 mb-4">
+        <div class="card h-100 shadow-sm"
+             style="cursor:pointer"
+             onclick="openImageModal({{ $index }})">
+            <div class="position-relative">
+                <div class="position-absolute top-0 start-0 m-2">
+                    <input class="form-check-input image-checkbox" 
+                           type="checkbox" 
+                           value="{{ $image->id }}" 
+                           id="image{{ $image->id }}"
+                           style="transform: scale(1.2);"
+                           onclick="event.stopPropagation();">
+                </div>
+                
+                <img src="{{ $image->file_path }}" 
+                     class="card-img-top" 
+                     style="height: 200px; object-fit: cover;"
+                     alt="{{ $image->image_name }}">
+                
+                <span class="position-absolute top-0 end-0 m-2 badge bg-dark">
+                    {{ strtoupper(pathinfo($image->image_name, PATHINFO_EXTENSION)) }}
+                </span>
+            </div>
+            
+            <div class="card-body p-3">
+                <h6 class="card-title mb-2" title="{{ $image->image_name }}">
+                    {{ Str::limit($image->image_name, 20) }}
+                </h6>
+                <div class="d-flex justify-content-between text-muted small mb-2">
+                    <span>{{ number_format($image->image_size / 1024, 1) }} KB</span>
+                    <span>{{ $image->updated_at->format('d/m/Y H:i') }}</span>
                 </div>
             </div>
-        @endforeach
+            
+            <div class="card-footer p-2">
+                <div class="btn-group w-100">
+                    <button class="btn btn-outline-primary btn-sm" 
+                            onclick="event.stopPropagation(); openImageModal({{ $index }})">
+                        <i class="fas fa-eye"></i>
+                    </button>
+                    <a href="{{ $image->file_path }}" 
+                       download="{{ $image->image_name }}"
+                       class="btn btn-outline-success btn-sm"
+                       onclick="event.stopPropagation();">
+                        <i class="fas fa-download"></i>
+                    </a>
+                    <form action="{{ route('images.destroy', $image) }}" 
+                          method="POST" 
+                          class="d-inline"
+                          onclick="event.stopPropagation();">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" 
+                                class="btn btn-outline-danger btn-sm"
+                                onclick="return confirm('¿Eliminar imagen {{ $image->image_name }}?')">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
-
+@endforeach
     <!-- 🆕 MODAL ÚNICA CON NAVEGACIÓN -->
     <div class="modal fade" id="imageModal" tabindex="-1">
         <div class="modal-dialog modal-xl modal-dialog-centered">
             <div class="modal-content">
-                <div class="modal-header">
+                <div class="modal-header aling-items-end justify-content-end">
                     <div class="d-flex align-items-center">
                         <span class="badge bg-secondary me-3" id="imageCounter">1 / {{ $images->count() }}</span>
                         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
