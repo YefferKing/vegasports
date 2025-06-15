@@ -148,6 +148,7 @@
         <div class="modal-dialog modal-xl modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
+                    <h5 class="modal-title" id="modalImageTitle">Imagen</h5>
                     <div class="d-flex align-items-center">
                         <span class="badge bg-secondary me-3" id="imageCounter">1 / {{ $images->count() }}</span>
                         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
