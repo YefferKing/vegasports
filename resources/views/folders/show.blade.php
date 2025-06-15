@@ -292,35 +292,6 @@ document.addEventListener('keydown', function(e) {
     }
 });
 
-// Soporte táctil para móviles
-document.addEventListener('touchstart', function(e) {
-    const modal = document.getElementById('imageModal');
-    if (modal && modal.classList.contains('show')) {
-        touchStartX = e.changedTouches[0].screenX;
-    }
-});
-
-document.addEventListener('touchend', function(e) {
-    const modal = document.getElementById('imageModal');
-    if (modal && modal.classList.contains('show')) {
-        touchEndX = e.changedTouches[0].screenX;
-        handleSwipe();
-    }
-});
-
-function handleSwipe() {
-    const swipeThreshold = 50; // Mínimo desplazamiento para activar
-    const diff = touchStartX - touchEndX;
-    
-    if (Math.abs(diff) > swipeThreshold) {
-        if (diff > 0) {
-            navigateImage(1); // Swipe izquierda = siguiente
-        } else {
-            navigateImage(-1); // Swipe derecha = anterior
-        }
-    }
-}
-
 // Resto del código para selección múltiple
 document.addEventListener('DOMContentLoaded', function() {
     const selectAllCheckbox = document.getElementById('selectAll');
