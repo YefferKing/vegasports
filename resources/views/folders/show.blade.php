@@ -148,7 +148,6 @@
         <div class="modal-dialog modal-xl modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="modalImageTitle">Imagen</h5>
                     <div class="d-flex align-items-center">
                         <span class="badge bg-secondary me-3" id="imageCounter">1 / {{ $images->count() }}</span>
                         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
@@ -180,8 +179,6 @@
                     
                     <!-- Información de la imagen -->
                     <div class="mt-3" id="imageInfo">
-                        <p class="mb-1"><strong>Tamaño:</strong> <span id="imageSize"></span></p>
-                        <p class="mb-1"><strong>Tipo:</strong> <span id="imageType"></span></p>
                         <p class="mb-0"><strong>Subida:</strong> <span id="imageDate"></span></p>
                     </div>
                 </div>
@@ -244,12 +241,9 @@ function navigateImage(direction) {
 function updateModalContent() {
     const image = allImages[currentImageIndex];
     
-    document.getElementById('modalImageTitle').textContent = image.name;
     document.getElementById('imageCounter').textContent = `${currentImageIndex + 1} / ${totalImages}`;
     document.getElementById('modalImage').src = image.path;
     document.getElementById('modalImage').alt = image.name;
-    document.getElementById('imageSize').textContent = formatBytes(image.size);
-    document.getElementById('imageType').textContent = image.type;
     document.getElementById('imageDate').textContent = image.date;
     document.getElementById('downloadBtn').href = image.path;
     document.getElementById('downloadBtn').download = image.name;
