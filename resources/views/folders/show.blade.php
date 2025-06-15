@@ -180,6 +180,8 @@
                     
                     <!-- Información de la imagen -->
                     <div class="mt-3" id="imageInfo">
+                        <p class="mb-1"><strong>Tamaño:</strong> <span id="imageSize"></span></p>
+                        <p class="mb-1"><strong>Tipo:</strong> <span id="imageType"></span></p>
                         <p class="mb-0"><strong>Subida:</strong> <span id="imageDate"></span></p>
                     </div>
                 </div>
