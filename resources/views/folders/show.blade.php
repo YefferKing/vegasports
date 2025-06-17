@@ -79,6 +79,7 @@
     </form>
 
     <!-- Grid de imágenes -->
+<div class="row">
 @foreach($images as $index => $image)
     <div class="col-md-6 col-lg-4 col-xl-3 mb-4">
         <div class="card h-100 shadow-sm"
@@ -143,6 +144,7 @@
         </div>
     </div>
 @endforeach
+</div>
     <!-- 🆕 MODAL ÚNICA CON NAVEGACIÓN -->
     <div class="modal fade" id="imageModal" tabindex="-1">
         <div class="modal-dialog modal-xl modal-dialog-centered">
