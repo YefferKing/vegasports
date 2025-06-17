@@ -17,7 +17,8 @@ class Image extends Model
         'image_name',
         'image_size',
         'image_type',
-        'file_path'
+        'file_path',
+        'cloudinary_public_id'
     ];
 
     protected $casts = [
